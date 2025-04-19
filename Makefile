@@ -6,7 +6,7 @@ INCLUDES = -Iinclude
 LIBS = -Llib
 
 OUTPUTDIR = build
-TARGET = kissed
+TARGET = kissed.exe
 
 SRCS = $(wildcard src/*.c)
 
@@ -15,7 +15,7 @@ OBJS = $(SRCS:src/%.c=$(OUTPUTDIR)/%.o)
 all: $(OUTPUTDIR)/$(TARGET)
 
 $(OUTPUTDIR)/$(TARGET): $(OBJS)
-	$(CC) $(OBJS) $(LDFLAGS) $(LIBS) -o $(TARGET)
+	$(CC) $(OBJS) $(LDFLAGS) $(LIBS) -o $(OUTPUTDIR)/$(TARGET)
 	@echo "$(TARGET).exe created in $(OUTPUTDIR)."
 
 $(OUTPUTDIR)/%.o: src/%.c
@@ -24,7 +24,7 @@ $(OUTPUTDIR)/%.o: src/%.c
 	@echo ".o files created."
 
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(OBJS) $(OUTPUTDIR)/$(TARGET)
 
 # Règle pour nettoyer tout
 distclean: clean
